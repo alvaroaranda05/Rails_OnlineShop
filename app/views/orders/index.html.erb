@@ -1,0 +1,35 @@
+<h1>Listing orders</h1>
+
+<table class="tableElementWithBorder">
+  <thead>
+    <tr>
+      <th class="tableElementWithBorder">Order status</th>
+      <th class="tableElementWithBorder">Payment method</th>
+      <th class="tableElementWithBorder">Shipping address</th>
+      <th class="tableElementWithBorder">Shipping city</th>
+      <th class="tableElementWithBorder">Purchaser name</th>
+      <th class="tableElementWithBorder">Purchase surname</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td class="tableElementWithBorder"><%= order.order_status %></td>
+        <td class="tableElementWithBorder"><%= order.payment_method %></td>
+        <td class="tableElementWithBorder"><%= order.shipping_address %></td>
+        <td class="tableElementWithBorder"><%= order.shipping_city %></td>
+        <td class="tableElementWithBorder"><%= order.purchaser_name %></td>
+        <td class="tableElementWithBorder"><%= order.purchase_surname %></td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order', new_order_path %>
